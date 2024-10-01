@@ -1,0 +1,15 @@
+# python
+__pycache__/
+# build
+dist
+build
+*.egg-info/
+*.so
+# cache dir
+.cache
+.test
+.vscode
+# checkpoint
+*.ckpt
+
+*.meta
