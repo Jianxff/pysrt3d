@@ -2,7 +2,7 @@
 
 Python binding for [*SRT3D: Region-Based 6DoF Object Tracking*](https://github.com/DLR-RM/3DObjectTracking/tree/master/SRT3D)
 
-https://github.com/user-attachments/assets/836877be-0909-4f06-ac3d-4bee9812d429
+https://github.com/user-attachments/assets/bf9b0102-c6a2-4eba-bd31-6a6ffa3dec50
 
 ## Modification
 #### 1. Automatical body-diameter calculation
