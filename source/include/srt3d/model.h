@@ -60,7 +60,7 @@ class Model {
 
   // Constructors and setup methods
   Model(const std::string &name, std::shared_ptr<Body> body_ptr,
-        const std::filesystem::path &directory, const std::string &filename,
+        const std::string &meta_file,
         float sphere_radius = 0.8, int n_divides = 4, int n_points = 200,
         bool use_random_seed = true, int image_size = 2000);
   bool SetUp();
@@ -68,8 +68,7 @@ class Model {
   // Setters
   void set_name(const std::string &name);
   void set_body_ptr(std::shared_ptr<Body> body_ptr);
-  void set_directory(const std::filesystem::path &directory);
-  void set_filename(const std::string &filename);
+  void set_meta_file(const std::string &meta_file);
   void set_sphere_radius(float sphere_radius);
   void set_n_divides(int n_divides);
   void set_n_points(int n_points);
@@ -83,8 +82,7 @@ class Model {
   // Getters
   const std::string &name() const;
   std::shared_ptr<Body> body_ptr() const;
-  const std::filesystem::path &directory() const;
-  const std::string &filename() const;
+  const std::string &meta_file() const;
   float sphere_radius() const;
   int n_divides() const;
   int n_points() const;
@@ -142,8 +140,7 @@ class Model {
   // Data
   std::string name_{};
   std::shared_ptr<Body> body_ptr_ = nullptr;
-  std::filesystem::path directory_{};
-  std::string filename_{};
+  std::string meta_file_{};
   float sphere_radius_{};
   int n_divides_{};
   int n_points_{};

@@ -6,13 +6,12 @@
 namespace srt3d {
 
 Model::Model(const std::string &name, std::shared_ptr<Body> body_ptr,
-             const std::filesystem::path &directory,
-             const std::string &filename, float sphere_radius, int n_divides,
+             const std::string &meta_file,
+             float sphere_radius, int n_divides,
              int n_points, bool use_random_seed, int image_size)
     : name_{name},
       body_ptr_{std::move(body_ptr)},
-      directory_{directory},
-      filename_{filename},
+      meta_file_{meta_file},
       sphere_radius_{sphere_radius},
       n_divides_{n_divides},
       n_points_{n_points},
@@ -36,13 +35,8 @@ void Model::set_body_ptr(std::shared_ptr<Body> body_ptr) {
   set_up_ = false;
 }
 
-void Model::set_directory(const std::filesystem::path &directory) {
-  directory_ = directory;
-  set_up_ = false;
-}
-
-void Model::set_filename(const std::string &filename) {
-  filename_ = filename;
+void Model::set_meta_file(const std::string &meta_file) {
+  meta_file_ = meta_file;
   set_up_ = false;
 }
 
@@ -98,9 +92,7 @@ const std::string &Model::name() const { return name_; }
 
 std::shared_ptr<Body> Model::body_ptr() const { return body_ptr_; }
 
-const std::filesystem::path &Model::directory() const { return directory_; }
-
-const std::string &Model::filename() const { return filename_; }
+const std::string &Model::meta_file() const { return meta_file_; }
 
 float Model::sphere_radius() const { return sphere_radius_; }
 
@@ -168,7 +160,7 @@ bool Model::GenerateModel() {
 }
 
 bool Model::LoadModel() {
-  std::filesystem::path data_path{directory_ / filename_};
+  std::filesystem::path data_path{meta_file_};
   std::ifstream data_ifs{data_path, std::ios::in | std::ios::binary};
   if (!data_ifs.is_open() || data_ifs.fail()) {
     data_ifs.close();
@@ -248,7 +240,7 @@ bool Model::LoadModel() {
 }
 
 bool Model::SaveModel() const {
-  std::filesystem::path data_path{directory_ / filename_};
+  std::filesystem::path data_path{meta_file_};
   std::ofstream data_ofs{data_path, std::ios::out | std::ios::binary};
 
   // Save template parameters

@@ -55,13 +55,9 @@ RegionModel::RegionModel(const std::string& name,
     // set model
     auto meta_path = meta_path_;
     if (meta_path.empty()) {
-        meta_path = geometry_path.replace_extension(".meta");
+        meta_path = geometry_path + ".meta";
     }
-    auto meta_path_fs = std::filesystem::absolute(
-        std::filesystem::path(meta_path));
-    auto filename = meta_path_fs.filename().string();
-    auto directory = meta_path_fs.parent_path();
-    model_ptr_ = std::make_shared<srt3d::Model>(name, body_ptr_, directory, filename, shpere_radius);
+    model_ptr_ = std::make_shared<srt3d::Model>(name, body_ptr_, meta_path, shpere_radius);
 }
 
 void RegionModel::Setup() {
