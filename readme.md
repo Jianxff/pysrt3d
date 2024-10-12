@@ -28,6 +28,26 @@ Make sure that you have installed the following packages:
 
 Your compilation environment should support `C++ 17`.
 
+#### Dependency Instruction
+- [method 1] Through system path
+  ```
+  $ sudo apt install libglew-dev libglfw3-dev libeigen3-dev
+  # BUILD opencv from source code: https://github.com/opencv/opencv
+  ```
+
+- [method 2] Under conda env
+  ```
+  $ conda activate ${YOUR_ENV_NAME}
+  $ conda install glew glfw eigen libopencv
+  ```
+
+- Other dependencies for `demo.py`
+  ```
+  pip install numpy
+  pip install opencv-python
+  ```
+
+#### Package Installation
 ```
 cd ${repo_root}
 pip install .
@@ -44,3 +64,6 @@ python demo.py
 
 ## Interface
 Just follow `example/demo.py` or `source/pysrt3d/pysrt3d.cpp`.
+
+## Note
+This algorithm is for object tracking only, without global pose estimation. In consequence, an initial pose (4 by 4 matrix under opencv coordinate) must be provided before you start tracking.
