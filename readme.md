@@ -20,12 +20,11 @@ The confidences are calculated independently. You can easily add models and get 
 
 ## Installation
 Make sure that you have installed the following packages:
-- OpenGL
 - GLEW
 - glfw3
 - Eigen3
 - OpenCV 3/4
-- OpenMP
+- OpenMP (may have already installed on your system)
 
 Your compilation environment should support `C++ 17`.
 
